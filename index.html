@@ -1,9 +1,8 @@
-<!-- Grouping Tool (Non-WebGL Version) by budou10 -->
 <!DOCTYPE html>
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <title>グループ分けツール | HTML5 Tools</title>
+        <title>席替えツール | HTML5 Tools</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://html5tools.netlify.app/html5tools-title.css">
         <link rel="stylesheet" href="https://html5tools.netlify.app/html5tools-footer.css">
@@ -16,9 +15,31 @@
         <p id="tooltitle" class="center">席替えツール</p>
         <!-- <button id="darkModeButton"></button> -->
         <p class="center">席替えの際の席を自動で決められるツール。</p>
-        <br>
+        <h2>座席表</h2>
+        <p id="debug1"></p>
+        <div id="scrollPos"></div>
+        <div id="seats"></div>
+        <h2>設定</h2>
+        <h3>席の指定</h3>
+        <p>座席表に表示された席をクリックすると、その席が有効（緑色）になります。もう一度クリックすると無効（白色）になります。</p>
+        <h3>メンバー・配置方法の指定</h3>
+        <textarea placeholder="メンバーの名前を入力（一行に一人）" id="menber"></textarea>
+        <textarea placeholder="メンバーから除外する人の名前を入力（一行に一人）" id="absent"></textarea>
+        <div class="dist">
+            <div><input type="radio" id="random"><label for="random">メンバーの欄に入力された順は無視し、完全にランダムで配置する</label></div>
+            <div><input type="radio" id="senojyunU"><label for="senojyunU">メンバーの欄の一番上の人は、前に配置する</label></div>
+            <div><input type="radio" id="senojyunD"><label for="senojyunD">メンバーの欄の一番上の人は、後ろに配置する</label></div>
+        </div>
+        <div class="dist">
+            <div><input type="checkbox" id="otanoshimi"><label for="otanoshimi">お楽しみモード: 結果が上から順に少しずつ表示される</label></div>
+        </div>
+        <div class="dist">
+            <input type="button" value="席を割り当てる" id="setSeats">
+            <input type="button" value="お楽しみモードを停止する" disabled id="stopOtanoshimi">
+            <input type="button" value="設定を保存" id="saveSettings">
+        </div>
         <footer>
-            <p>Copyright &copy; HTML5 Tools 2025 | ライセンス: Apache License 2.0 | <a href="https://x.gd/H5T_grp_src" download>ソースコードをダウンロード</a> | <a href="https://forms.gle/riqVmYtL7mRj38V29">フィードバック</a></p>
+            <p>Copyright &copy; HTML5 Tools 2025 | ライセンス: Apache License 2.0 | <a href="https://x.gd/H5T_seat_src" download>ソースコードをダウンロード</a> | <a href="https://forms.gle/riqVmYtL7mRj38V29">フィードバック</a></p>
         </footer>
     </body>
 </html>
