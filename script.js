@@ -151,7 +151,9 @@ function loadSettings() {
     textContents.forEach((text, i) => {
         document.querySelector("#seat" + use_seats_num[i]).textContent = text;
     });
-    seatSetted = true;
+    if(!(textContents == [])){
+        seatSetted = true;
+    }
 
 }
 loadSettings();
