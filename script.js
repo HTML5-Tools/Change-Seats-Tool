@@ -146,16 +146,17 @@ function loadSettings() {
         seatElem.setAttribute("use", "true");
         use_seats_num.push(seatElem.number);
     }
-    const textContents = JSON.parse(localStorage.getItem("textContents")) || [];
+    const textContents = JSON.parse(localStorage.getItem("textContents")) || null;
     console.log(textContents + "," + JSON.stringify(textContents));
-    textContents.forEach((text, i) => {
-        document.querySelector("#seat" + use_seats_num[i]).textContent = text;
-    });
-    if(!(textContents == [])){
+    if (textContents){
+        textContents.forEach((text, i) => {
+            document.querySelector("#seat" + use_seats_num[i]).textContent = text;
+        });
         seatSetted = true;
+    } else {
+        seatSetted = false;
     }
-
-}
+} 
 loadSettings();
 saveSettingsBtn.addEventListener("click", saveSettings);
 
@@ -195,21 +196,21 @@ function showNext(){
         console.log("お楽しみモード終了");
         return;
     }
-    document.querySelector("#seat" + otanoshimiIndex).textContent = otanoshimiItems[otanoshimiIndex];
+    useSeatsElem[otanoshimiIndex].textContent = otanoshimiItems[otanoshimiIndex];
     otanoshimiIndex++;
     console.log(otanoshimiIndex);
 }
 
 let otanoshimiInterval = null;
-
 // 席指定
+let useSeatsElem = [];
 function setSeats() {
     otanoshimiIndex = 0;
     otanoshimiItems = [];
     disableInputs();
     processing = true;
     // 有効席の取得
-    const useSeatsElem = [];
+    useSeatsElem = [];
     for (let i = 0; i < use_seats.length; i++){
         useSeatsElem.push(document.querySelector("#" + use_seats[i]));
     }
